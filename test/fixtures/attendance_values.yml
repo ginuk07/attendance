@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  client: 
+  attendance_sheet: 
+  status: MyString
+
+two:
+  client: 
+  attendance_sheet: 
+  status: MyString

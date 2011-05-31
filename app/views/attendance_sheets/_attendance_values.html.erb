@@ -1,0 +1,5 @@
+<%= form.fields_for :attendance_values, [ AttendanceValue.new(:status=>"Tardy") ] do |attendance_values_form| %>
+  <span class="field">
+    <%= attendance_values_form.select "status", options_from_collection_for_select([ AttendanceValue.new(:status=>"Tardy") ], 'status', 'status'), { :selected => :status, :include_blank => true } %>
+  </span>
+<% end %>

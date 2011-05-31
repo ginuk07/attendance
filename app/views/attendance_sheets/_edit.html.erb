@@ -1,0 +1,30 @@
+<%= form_for(@attendance_sheet) do |attendance_form| %>
+  <% if @attendance_sheet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attendance_sheet.errors.count, "error") %> prohibited this Attendance Sheet from being saved:</h2>
+
+      <ul>
+      <% @attendance_sheet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= attendance_form.label :date %><br />
+    <%= attendance_form.date_select :date %>
+  </div>
+  <h2>Clients</h2>
+  <%= attendance_form.fields_for :clients do |client_form| %>
+    <div class="field">
+      <%= client_form.label :name %>
+      <%= client_form.text_field :name %>
+      <%= render :partial => "attendance_sheets/attendance_values",
+                 :locals  => { :form => attendance_form } %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= attendance_form.submit %>
+  </div>
+<% end %>

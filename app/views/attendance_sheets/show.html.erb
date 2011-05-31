@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @attendance_sheet.date %>
+  <% @attendance_sheet.clients.each do |c| %>
+    <p>Name: <%= c.name %></p>
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_attendance_sheet_path(@attendance_sheet) %> |
+<%= link_to 'Back', attendance_sheets_path %>

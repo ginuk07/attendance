@@ -1,0 +1,23 @@
+<%= form_for(@attendance_sheet) do |f| %>
+  <% if @attendance_sheet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attendance_sheet.errors.count, "error") %> prohibited this Attendance Sheet from being saved:</h2>
+
+      <ul>
+      <% @attendance_sheet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </div>
+  <%= render :partial => "clients/client",
+             :collection => :clients %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
