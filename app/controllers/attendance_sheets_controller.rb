@@ -41,10 +41,13 @@ class AttendanceSheetsController < ApplicationController
   # POST /attendance_sheets.xml
   def create
     client_ids = params[:attendance_sheet][:clients_attributes].values.collect { |x| x["id"] }
-    av = params[:attendance_sheet][:clients_attributes].values.collect { |x| x["attendance_values_attributes"].values }
-    #params[:attendance_sheet].delete(:clients_attributes)
+    av = params[:attendance_sheet][:clients_attributes].values.collect { |x| x["attendance_values_attributes"].values }.collect { |x| x[0]["status"] }
+    params[:attendance_sheet].delete(:clients_attributes)
     @attendance_sheet = AttendanceSheet.new(params[:attendance_sheet])
-
+    client_ids.each do |id|
+      client = Client.find(id)
+      client.attendance_values.push(AttendanceValue.new(:client_id => id, :attendance_sheet => @attendance_sheet, :status => av.pop))
+    end
     respond_to do |format|
       if @attendance_sheet.save
         format.html { redirect_to(@attendance_sheet, :notice => 'Attendance sheet was successfully created.') }
