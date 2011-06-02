@@ -1,8 +1,10 @@
 Attendance::Application.routes.draw do
   resources :attendance_sheets do
-    resources :clients, :attendance_statuses
+    resources :clients, :attendance_values
   end
-
+  resources :attendance_values do
+    resources :client, :attendance_sheet
+  end
   resources :clients
 
   get "home/index"

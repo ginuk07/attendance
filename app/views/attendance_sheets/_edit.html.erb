@@ -16,14 +16,8 @@
     <%= attendance_form.date_select :date %>
   </div>
   <h2>Clients</h2>
-  <%= attendance_form.fields_for :clients do |client_form| %>
-    <div class="field">
-      <%= client_form.label :name %>
-      <%= client_form.text_field :name %>
-      <%= render :partial => "attendance_sheets/attendance_values",
-                 :locals  => { :form => attendance_form } %>
-    </div>
-  <% end %>
+  <%= render :partial => "clients/client",
+             :locals  => { :form => attendance_form } %>
   <div class="actions">
     <%= attendance_form.submit %>
   </div>

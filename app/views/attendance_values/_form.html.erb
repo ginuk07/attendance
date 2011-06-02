@@ -1,0 +1,33 @@
+<%= form_for(@attendance_value) do |f| %>
+  <% if @attendance_value.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attendance_value.errors.count, "error") %> prohibited this attendance_value from being saved:</h2>
+
+      <ul>
+      <% @attendance_value.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.fields_for :attendance_sheet do |a_form| %>
+      <%= a_form.label :date %>
+      <%= a_form.date_select :date %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.fields_for :client do |c_form| %>
+      <%= c_form.label :name %>
+      <%= c_form.select "id", options_from_collection_for_select(Client.all, "id", "name"), { :include_blank => true } %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.select "status", options_for_select(["Present","Tardy","Unexcused Absence"]), { :include_blank => true }  %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

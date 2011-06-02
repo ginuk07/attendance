@@ -1,7 +1,7 @@
-<%= form.fields_for :clients, @new_clients do |client_form| %>
+<%= form.fields_for :clients, @clients do |client_form| %>
   <div class="field">
     <%= client_form.label :name %>
-    <%= client_form.text_field :name %>
+    <%= client_form.text_field :name, :disabled => true %>
     <%= render :partial => "attendance_sheets/attendance_values",
                :locals  => { :form => client_form } %>
   </div>

@@ -24,7 +24,8 @@ class AttendanceSheetsController < ApplicationController
   # GET /attendance_sheets/new
   # GET /attendance_sheets/new.xml
   def new
-    @new_clients = Client.all
+    @attendance_values = [ AttendanceValue.new ]
+    @clients = Client.all
     @attendance_sheet = AttendanceSheet.new
     respond_to do |format|
       format.html # new.html.erb
@@ -35,18 +36,20 @@ class AttendanceSheetsController < ApplicationController
   # GET /attendance_sheets/1/edit
   def edit
     @attendance_sheet = AttendanceSheet.find(params[:id])
+    @clients = @attendance_sheet.clients
   end
 
   # POST /attendance_sheets
   # POST /attendance_sheets.xml
   def create
     client_ids = params[:attendance_sheet][:clients_attributes].values.collect { |x| x["id"] }
-    av = params[:attendance_sheet][:clients_attributes].values.collect { |x| x["attendance_values_attributes"].values }.collect { |x| x[0]["status"] }
-    params[:attendance_sheet].delete(:clients_attributes)
+    av = []
+    params[:attendance_sheet][:clients_attributes].values.collect { |x| x["attendance_value_attributes"].values.each do |y| av.push(y["status"]) end }
+    #params[:attendance_sheet].delete(:clients_attributes)
     @attendance_sheet = AttendanceSheet.new(params[:attendance_sheet])
     client_ids.each do |id|
       client = Client.find(id)
-      client.attendance_values.push(AttendanceValue.new(:client_id => id, :attendance_sheet => @attendance_sheet, :status => av.pop))
+      client.attendance_value = AttendanceValue.new(:client_id => id, :attendance_sheet => @attendance_sheet, :status => av.pop)
     end
     respond_to do |format|
       if @attendance_sheet.save
