@@ -1,11 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  client: 
-  attendance_sheet: 
-  status: MyString
+  client: harry
+  attendance_sheet: one
+  status: Present
 
 two:
-  client: 
-  attendance_sheet: 
-  status: MyString
+  client: sandra
+  attendance_sheet: two
+  status: Tardy

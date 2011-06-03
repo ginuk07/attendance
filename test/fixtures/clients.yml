@@ -1,13 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
-  previous_school: MyString
+harry:
+  name: Harold Test Jr.
+  previous_school: Wonder Wheel
   admission_date: 2011-05-28
-  attendance_sheet: 
 
-two:
-  name: MyString
-  previous_school: MyString
+sandra:
+  name: Sandra Johnson
+  previous_school: Bethal
   admission_date: 2011-05-28
-  attendance_sheet: 

@@ -18,7 +18,13 @@ class AttendanceValuesControllerTest < ActionController::TestCase
 
   test "should create attendance_value" do
     assert_difference('AttendanceValue.count') do
-      post :create, :attendance_value => @attendance_value.attributes
+      attendance_value_attr = @attendance_value.attributes
+      attendance_value_attr[:client_attributes] = @attendance_value.client.attributes
+      attendance_value_attr[:attendance_sheet_attributes] = @attendance_value.attendance_sheet.attributes
+      attendance_value_attr[:attendance_sheet_attributes]["date(1i)"] = @attendance_value.attendance_sheet.date.year
+      attendance_value_attr[:attendance_sheet_attributes]["date(2i)"] = @attendance_value.attendance_sheet.date.month
+      attendance_value_attr[:attendance_sheet_attributes]["date(3i)"] = @attendance_value.attendance_sheet.date.day
+      post :create, :attendance_value => attendance_value_attr
     end
 
     assert_redirected_to attendance_value_path(assigns(:attendance_value))
