@@ -24,7 +24,9 @@ class AttendanceValuesController < ApplicationController
   # GET /attendance_values/new
   # GET /attendance_values/new.xml
   def new
-    @attendance_value = AttendanceValue.new(:client => Client.new, :attendance_sheet => AttendanceSheet.new)
+    @attendance_value = AttendanceValue.new
+    @client = Client.new
+    @attendance_sheet = AttendanceSheet.new
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @attendance_value }
