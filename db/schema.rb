@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110601012313) do
+ActiveRecord::Schema.define(:version => 20110604150350) do
 
   create_table "attendance_sheets", :force => true do |t|
     t.date     "date"
@@ -33,5 +33,7 @@ ActiveRecord::Schema.define(:version => 20110601012313) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "clients", ["name"], :name => "name_index", :unique => true
 
 end
