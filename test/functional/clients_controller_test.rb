@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ClientsControllerTest < ActionController::TestCase
   setup do
+    @request.env["HTTP_AUTHORIZATION"] = "Basic " + Base64::encode64("admin:attendanceadmin")
     @client = clients(:harry)
   end
 
