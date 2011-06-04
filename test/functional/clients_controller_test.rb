@@ -19,6 +19,7 @@ class ClientsControllerTest < ActionController::TestCase
 
   test "should create client" do
     assert_difference('Client.count') do
+      @client.name = "Joe Smith"
       post :create, :client => @client.attributes
     end
 
