@@ -2,7 +2,7 @@ class AttendanceValuesController < ApplicationController
   # GET /attendance_values
   # GET /attendance_values.xml
   def index
-    @attendance_values = AttendanceValue.all
+    @attendance_values = AttendanceValue.all.sort
 
     respond_to do |format|
       format.html # index.html.erb
