@@ -1,9 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @client.name %>
-</p>
+<table>
+  <tr>
+    <td><b>Name:</b></td>
+    <td><%= @client.name %></td>
+  </tr>
+  <tr>
+    <td><b>Previous School:</b></td>
+    <td><%= @client.previous_school %></td>
+  </tr>
+  <tr>
+    <td><b>Admission Date:</b></td>
+    <td><%= @client.admission_date %></td>
+  </tr>
+</table>
 
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>
