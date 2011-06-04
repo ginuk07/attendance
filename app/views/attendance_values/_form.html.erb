@@ -23,7 +23,7 @@
     <% end %>
   </div>
   <div class="field">
-    Status:<%= f.select "status", ["Present", "Tardy", "Unexcused Absence", "Excused Absence", "School Closed"], { :include_blank => true }  %>
+    Status:<%= f.select "status", ["Present", "Tardy", "Unexcused Absence", "Excused Absence", "School Closed", "Suspended"], { :include_blank => true }  %>
   </div>
   <div class="actions">
     <%= f.submit %>
