@@ -18,6 +18,7 @@ class AttendanceValuesControllerTest < ActionController::TestCase
 
   test "should create attendance_value" do
     assert_difference('AttendanceValue.count') do
+      @attendance_value.client = clients(:john)
       attendance_value_attr = @attendance_value.attributes
       attendance_value_attr[:client_attributes] = @attendance_value.client.attributes
       attendance_value_attr[:attendance_sheet_attributes] = @attendance_value.attendance_sheet.attributes
