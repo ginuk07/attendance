@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Display name:</b>
+  <%= @classification.display_name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @classification.name %>
+</p>
+
+<p>
+  <b>Rate:</b>
+  <%= @classification.rate %>
+</p>
+
+
+<%= link_to 'Edit', edit_classification_path(@classification) %> |
+<%= link_to 'Back', classifications_path %>

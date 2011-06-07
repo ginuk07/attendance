@@ -1,0 +1,27 @@
+<h1>Listing classifications</h1>
+
+<table>
+  <tr>
+    <th>Display name</th>
+    <th>Name</th>
+    <th>Rate</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @classifications.each do |classification| %>
+  <tr>
+    <td><%= classification.display_name %></td>
+    <td><%= classification.name %></td>
+    <td><%= classification.rate %></td>
+    <td><%= link_to 'Show', classification %></td>
+    <td><%= link_to 'Edit', edit_classification_path(classification) %></td>
+    <td><%= link_to 'Destroy', classification, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Classification', new_classification_path %>

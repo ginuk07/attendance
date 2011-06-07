@@ -13,6 +13,10 @@
     <td><b>Admission Date:</b></td>
     <td><%= @client.admission_date %></td>
   </tr>
+  <tr>
+    <td><b>Billing Classification:</b></td>
+    <td><%= @client.classification.display_name unless @client.classification == nil %></td>
+  </tr>
 </table>
 
 <%= link_to 'Edit', edit_client_path(@client) %> |

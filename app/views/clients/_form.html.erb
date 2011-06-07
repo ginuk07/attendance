@@ -23,6 +23,10 @@
     <%= client_form.label :admission_date %><br />
     <%= client_form.date_select :admission_date %>
   </div>
+  <div class="field">
+    <%= client_form.label :classification_id, "Billing Classification" %><br />
+    <%= client_form.select :classification_id, Classification.all.collect { |c| [ c.display_name, c.id ] }, { :include_blank => true } %>
+  </div>
   <div class="actions">
     <%= client_form.submit %>
   </div>

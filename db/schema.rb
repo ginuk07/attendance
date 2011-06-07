@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110604150350) do
+ActiveRecord::Schema.define(:version => 20110607130712) do
 
   create_table "attendance_sheets", :force => true do |t|
     t.date     "date"
@@ -26,12 +26,21 @@ ActiveRecord::Schema.define(:version => 20110604150350) do
     t.datetime "updated_at"
   end
 
+  create_table "classifications", :force => true do |t|
+    t.string   "display_name"
+    t.string   "name"
+    t.decimal  "rate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "clients", :force => true do |t|
     t.string   "name"
     t.string   "previous_school"
     t.date     "admission_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "classification_id"
   end
 
   add_index "clients", ["name"], :name => "name_index", :unique => true

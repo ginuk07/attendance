@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  display_name: Regular Education
+  name: reg_ed
+  rate: 9.99
+
+two:
+  display_name: Special Education
+  name: spec_ed
+  rate: 9.99
