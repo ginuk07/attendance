@@ -9,6 +9,7 @@ Attendance::Application.routes.draw do
     resources :classification
   end
   resources :classifications
+  resources :schools
 
   get "home/index"
 
