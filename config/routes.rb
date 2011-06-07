@@ -1,9 +1,9 @@
 Attendance::Application.routes.draw do
-  resources :attendance_sheets do
+  resources :sheets do
     resources :clients, :attendance_values
   end
   resources :attendance_values do
-    resources :client, :attendance_sheet
+    resources :client, :sheet
   end
   resources :clients do
     resources :classification

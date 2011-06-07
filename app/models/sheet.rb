@@ -1,4 +1,4 @@
-class AttendanceSheet < ActiveRecord::Base
+class Sheet < ActiveRecord::Base
   has_many :attendance_values, :dependent => :destroy
   has_many :clients, :through => :attendance_values, :order => :name
   accepts_nested_attributes_for :clients

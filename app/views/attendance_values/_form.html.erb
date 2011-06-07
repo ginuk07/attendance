@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.fields_for :attendance_sheet, @attendance_sheet do |a_form| %>
+    <%= f.fields_for :sheet, @sheet do |a_form| %>
       <%= a_form.label :date %>
       <%= a_form.date_select :date, :start_year => Time.now.year, :end_year => 1991 %>
     <% end %>

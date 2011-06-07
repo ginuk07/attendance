@@ -2,10 +2,10 @@
 
 one:
   client: harry
-  attendance_sheet: one
+  sheet: one
   status: Present
 
 two:
   client: sandra
-  attendance_sheet: two
+  sheet: two
   status: Tardy

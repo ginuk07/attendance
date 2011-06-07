@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(:version => 20110607151403) do
 
-  create_table "attendance_sheets", :force => true do |t|
+  create_table "sheets", :force => true do |t|
     t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20110607151403) do
 
   create_table "attendance_values", :force => true do |t|
     t.integer  "client_id"
-    t.integer  "attendance_sheet_id"
+    t.integer  "sheet_id"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -26,7 +26,7 @@ class AttendanceValuesController < ApplicationController
   def new
     @attendance_value = AttendanceValue.new
     @client = Client.new
-    @attendance_sheet = AttendanceSheet.new
+    @sheet = Sheet.new
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @attendance_value }
@@ -43,15 +43,15 @@ class AttendanceValuesController < ApplicationController
   def create
     status = params[:attendance_value]["status"]
     client_id = params[:attendance_value][:client_attributes]["id"]
-    qyear = params[:attendance_value][:attendance_sheet_attributes].values_at("date(1i)")[0].to_i
-    qmonth = params[:attendance_value][:attendance_sheet_attributes].values_at("date(2i)")[0].to_i
-    qday = params[:attendance_value][:attendance_sheet_attributes].values_at("date(3i)")[0].to_i
+    qyear = params[:attendance_value][:sheet_attributes].values_at("date(1i)")[0].to_i
+    qmonth = params[:attendance_value][:sheet_attributes].values_at("date(2i)")[0].to_i
+    qday = params[:attendance_value][:sheet_attributes].values_at("date(3i)")[0].to_i
     qdate = Date.new(y=qyear,m=qmonth,d=qday).to_s
-    attendance_sheet = AttendanceSheet.where(:date => qdate).limit(1)[0]
-    if attendance_sheet.nil?
-      attendance_sheet = AttendanceSheet.new(params[:attendance_value][:attendance_sheet_attributes])
+    sheet = Sheet.where(:date => qdate).limit(1)[0]
+    if sheet.nil?
+      sheet = Sheet.new(params[:attendance_value][:sheet_attributes])
     end
-    @attendance_value = AttendanceValue.new(:client_id => client_id, :attendance_sheet => attendance_sheet, :status => status)
+    @attendance_value = AttendanceValue.new(:client_id => client_id, :sheet => sheet, :status => status)
 
     respond_to do |format|
       if @attendance_value.save

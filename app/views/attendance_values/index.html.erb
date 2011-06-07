@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Attendance sheet</th>
+    <th>Attendance Sheet</th>
     <th>Client</th>
     <th>Status</th>
     <th></th>
@@ -12,7 +12,7 @@
 
 <% @attendance_values.each do |attendance_value| %>
   <tr>
-    <td><%= attendance_value.attendance_sheet.date %></td>
+    <td><%= attendance_value.sheet.date %></td>
     <td><%= attendance_value.client.name %></td>
     <td><%= attendance_value.status %></td>
     <td><%= link_to 'Show', attendance_value %></td>

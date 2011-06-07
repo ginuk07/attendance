@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @sheet.date %>
+  <% @sheet.clients.each do |c| %>
+    <p>Name: <%= c.name %>, <%= c.attendance_values.collect { |v| if v.sheet_id == @sheet.id then v.status end }  %></p>
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_sheet_path(@sheet) %> |
+<%= link_to 'Back', sheets_path %>
