@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110607145710) do
+ActiveRecord::Schema.define(:version => 20110607151403) do
 
   create_table "attendance_sheets", :force => true do |t|
     t.date     "date"
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(:version => 20110607145710) do
     t.string   "name"
     t.string   "previous_school"
     t.date     "admission_date"
-    t.integer  "attendance_sheet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "classification_id"
