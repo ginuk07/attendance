@@ -14,6 +14,14 @@
     <td><%= @client.admission_date %></td>
   </tr>
   <tr>
+    <td><b>IEP Date:</b></td>
+    <td><%= @client.iep_date %></td>
+  </tr>
+  <tr>
+    <td><b>Discharge Date:</b></td>
+    <td><%= @client.discharge_date %></td>
+  </tr>
+  <tr>
     <td><b>Billing Classification:</b></td>
     <td><%= @client.classification.display_name unless @client.classification == nil %></td>
   </tr>

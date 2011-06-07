@@ -20,8 +20,16 @@
     <%= client_form.select :previous_school, School.order('name asc').all.collect { |c| [ c.name, c.name ] }, { :include_blank => true } %>
   </div>
   <div class="field">
-    <%= client_form.label :admission_date %><br />
-    <%= client_form.date_select :admission_date %>
+    <%= client_form.label :admission_date%><br />
+    <%= client_form.date_select :admission_date, :include_blank => true, :start_year => 1980, :end_year => Time.now.year %>
+  </div>
+  <div class="field">
+    <%= client_form.label :discharge_date %><br />
+    <%= client_form.date_select :discharge_date, :include_blank => true, :start_year => 1980, :end_year => Time.now.year %>
+  </div>
+  <div class="field">
+    <%= client_form.label :iep_date %><br />
+    <%= client_form.date_select :iep_date, :include_blank => true, :start_year => 1980, :end_year => Time.now.year %>
   </div>
   <div class="field">
     <%= client_form.label :classification_id, "Billing Classification" %><br />
