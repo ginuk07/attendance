@@ -14,7 +14,7 @@
   <tr>
     <td><%= classification.display_name %></td>
     <td><%= classification.name %></td>
-    <td><%= classification.rate %></td>
+    <td><%= number_to_currency classification.rate %></td>
     <td><%= link_to 'Show', classification %></td>
     <td><%= link_to 'Edit', edit_classification_path(classification) %></td>
     <td><%= link_to 'Destroy', classification, :confirm => 'Are you sure?', :method => :delete %></td>
