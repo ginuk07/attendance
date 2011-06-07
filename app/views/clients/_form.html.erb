@@ -21,15 +21,15 @@
   </div>
   <div class="field">
     <%= client_form.label :admission_date%><br />
-    <%= client_form.date_select :admission_date, :include_blank => true, :start_year => 1980, :end_year => Time.now.year %>
+    <%= client_form.date_select :admission_date, :include_blank => true, :start_year => Time.now.year, :end_year => 1991 %>
   </div>
   <div class="field">
     <%= client_form.label :discharge_date %><br />
-    <%= client_form.date_select :discharge_date, :include_blank => true, :start_year => 1980, :end_year => Time.now.year %>
+    <%= client_form.date_select :discharge_date, :include_blank => true, :start_year => Time.now.year, :end_year => 1991 %>
   </div>
   <div class="field">
     <%= client_form.label :iep_date %><br />
-    <%= client_form.date_select :iep_date, :include_blank => true, :start_year => 1980, :end_year => Time.now.year %>
+    <%= client_form.date_select :iep_date, :include_blank => true, :start_year => Time.now.year, :end_year => 1991 %>
   </div>
   <div class="field">
     <%= client_form.label :classification_id, "Billing Classification" %><br />
