@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20110607151403) do
     t.datetime "updated_at"
   end
 
-  create_table "attendance_values", :force => true do |t|
+  create_table "assignments", :force => true do |t|
     t.integer  "client_id"
     t.integer  "sheet_id"
     t.string   "status"

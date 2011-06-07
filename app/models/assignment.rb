@@ -1,4 +1,4 @@
-class AttendanceValue < ActiveRecord::Base
+class Assignment < ActiveRecord::Base
   include Comparable
 
   belongs_to :client
@@ -7,7 +7,7 @@ class AttendanceValue < ActiveRecord::Base
   accepts_nested_attributes_for :sheet
   validates_presence_of :client
   validates_each :client, :on => :create do |model, attr, value|
-    AttendanceValue.joins(:sheet, :client).where(:client_id => model.client.id).collect { |a| if a.sheet.date == model.sheet.date then model.errors.add(attr, 'already assigned to this sheet') end }
+    Assignment.joins(:sheet, :client).where(:client_id => model.client.id).collect { |a| if a.sheet.date == model.sheet.date then model.errors.add(attr, 'already assigned to this sheet') end }
   end
 
   def <=>(other)

@@ -1,8 +1,8 @@
 Attendance::Application.routes.draw do
   resources :sheets do
-    resources :clients, :attendance_values
+    resources :clients, :assignments
   end
-  resources :attendance_values do
+  resources :assignments do
     resources :client, :sheet
   end
   resources :clients do

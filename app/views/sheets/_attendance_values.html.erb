@@ -1,7 +1,0 @@
-<%= form.fields_for :attendance_values do |attendance_value_form| %>
-  <% if :sheet_id == @sheet.id %>
-    <span class="field">
-      <%= attendance_value_form.select "status", ["Present", "Tardy", "Unexcused Absence", "Excused Absence", "School Closed"], { :include_blank => true } %>
-    </span>
-  <% end %>
-<% end %>

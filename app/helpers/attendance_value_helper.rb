@@ -1,2 +1,0 @@
-module AttendanceValueHelper
-end

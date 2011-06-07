@@ -24,7 +24,7 @@ class SheetsController < ApplicationController
   # GET /sheets/new
   # GET /sheets/new.xml
   def new
-    @attendance_values = [ AttendanceValue.new ]
+    @assignments = [ Assignment.new ]
     @clients = Client.all
     @sheet = Sheet.new
     respond_to do |format|

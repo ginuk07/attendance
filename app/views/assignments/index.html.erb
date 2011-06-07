@@ -1,0 +1,28 @@
+<h1>Listing Attendance Assignments</h1>
+
+<table>
+  <tr>
+    <th>Attendance Sheet</th>
+    <th>Client</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @assignments.each do |assignment| %>
+  <tr>
+    <td><%= assignment.sheet.date %></td>
+    <td><%= assignment.client.name %></td>
+    <td><%= assignment.status %></td>
+    <td><%= link_to 'Show', assignment %></td>
+    <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
+    <td><%= link_to 'Destroy', assignment, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Attendance Assignment', new_assignment_path %> |
+<%= link_to 'Back', '/' %>

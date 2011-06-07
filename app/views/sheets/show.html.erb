@@ -4,7 +4,7 @@
   <b>Date:</b>
   <%= @sheet.date %>
   <% @sheet.clients.each do |c| %>
-    <p>Name: <%= c.name %>, <%= c.attendance_values.collect { |v| if v.sheet_id == @sheet.id then v.status end }  %></p>
+    <p>Name: <%= c.name %>, <%= c.assignments.collect { |v| if v.sheet_id == @sheet.id then v.status end }  %></p>
   <% end %>
 </p>
 

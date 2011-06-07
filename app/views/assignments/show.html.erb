@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Attendance Sheet:</b>
+  <%= @assignment.sheet.date %>
+</p>
+
+<p>
+  <b>Client:</b>
+  <%= @assignment.client.name %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @assignment.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+<%= link_to 'Back', assignments_path %>
