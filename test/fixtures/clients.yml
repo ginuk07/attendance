@@ -2,18 +2,18 @@
 
 harry:
   name: Harold Test Jr.
-  previous_school: Wonder Wheel
   admission_date: 2011-05-28
   classification: one
+  school: one
 
 sandra:
   name: Sandra Johnson
-  previous_school: Bethal
   admission_date: 2011-05-28
   classification: one
+  school: one
 
 john:
   name: John Doe
-  previous_school: Nowhere
   admission_date: 2011-06-06
   classification: two
+  school: two

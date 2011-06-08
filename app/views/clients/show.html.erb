@@ -7,7 +7,7 @@
   </tr>
   <tr>
     <td><b>Previous School:</b></td>
-    <td><%= @client.previous_school %></td>
+    <td><%= @client.school.name unless @client.school == nil %></td>
   </tr>
   <tr>
     <td><b>Admission Date:</b></td>

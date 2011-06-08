@@ -16,8 +16,8 @@
     <%= client_form.text_field :name %>
   </div>
   <div class="field">
-    <%= client_form.label :previous_school %><br />
-    <%= client_form.select :previous_school, School.order('name asc').all.collect { |c| [ c.name, c.name ] }, { :include_blank => true } %>
+    <%= client_form.label :school_id %><br />
+    <%= client_form.select :school_id, School.order('name asc').all.collect { |c| [ c.name, c.id ] }, { :include_blank => true } %>
   </div>
   <div class="field">
     <%= client_form.label :admission_date%><br />

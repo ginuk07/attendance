@@ -10,13 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110607151403) do
-
-  create_table "sheets", :force => true do |t|
-    t.date     "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20110608145952) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "client_id"
@@ -36,13 +30,13 @@ ActiveRecord::Schema.define(:version => 20110607151403) do
 
   create_table "clients", :force => true do |t|
     t.string   "name"
-    t.string   "previous_school"
     t.date     "admission_date"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "classification_id"
     t.date     "discharge_date"
     t.date     "iep_date"
+    t.integer  "school_id"
   end
 
   add_index "clients", ["name"], :name => "name_index", :unique => true
@@ -54,5 +48,11 @@ ActiveRecord::Schema.define(:version => 20110607151403) do
   end
 
   add_index "schools", ["name"], :name => "index_schools_on_name", :unique => true
+
+  create_table "sheets", :force => true do |t|
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
