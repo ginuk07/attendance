@@ -19,13 +19,7 @@ class AssignmentsControllerTest < ActionController::TestCase
   test "should create assignment" do
     assert_difference('Assignment.count') do
       @assignment.client = clients(:john)
-      assignment_attr = @assignment.attributes
-      assignment_attr[:client_attributes] = @assignment.client.attributes
-      assignment_attr[:sheet_attributes] = @assignment.sheet.attributes
-      assignment_attr[:sheet_attributes]["date(1i)"] = @assignment.sheet.date.year
-      assignment_attr[:sheet_attributes]["date(2i)"] = @assignment.sheet.date.month
-      assignment_attr[:sheet_attributes]["date(3i)"] = @assignment.sheet.date.day
-      post :create, :assignment => assignment_attr
+      post :create, :assignment => @assignment.attributes
     end
 
     assert_redirected_to assignment_path(assigns(:assignment))

@@ -2,15 +2,14 @@ class Assignment < ActiveRecord::Base
   include Comparable
 
   belongs_to :client
-  belongs_to :sheet
   accepts_nested_attributes_for :client
-  accepts_nested_attributes_for :sheet
   validates_presence_of :client_id
   validates_each :client_id, :on => :create do |model, attr, value|
-    Assignment.joins(:sheet, :client).where(:client_id => model.client_id).collect { |a| if a.sheet.date == model.sheet.date then model.errors.add(attr, 'already assigned to this sheet') end }
+    a = Assignment.where(:client_id => model.client_id, :date => model.date)
+    unless a.size == 0 then model.errors.add(attr, 'already assigned') end
   end
 
   def <=>(other)
-    other.sheet.date <=> self.sheet.date
+    other.date <=> self.date
   end
 end

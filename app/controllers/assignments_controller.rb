@@ -26,7 +26,6 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = Assignment.new
     @client = Client.new
-    @sheet = Sheet.new
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @assignment }
@@ -41,17 +40,7 @@ class AssignmentsController < ApplicationController
   # POST /assignments
   # POST /assignments.xml
   def create
-    status = params[:assignment]["status"]
-    client_id = params[:assignment]["client_id"]
-    qyear = params[:assignment][:sheet_attributes].values_at("date(1i)")[0].to_i
-    qmonth = params[:assignment][:sheet_attributes].values_at("date(2i)")[0].to_i
-    qday = params[:assignment][:sheet_attributes].values_at("date(3i)")[0].to_i
-    qdate = Date.new(y=qyear,m=qmonth,d=qday).to_s
-    sheet = Sheet.where(:date => qdate).limit(1)[0]
-    if sheet.nil?
-      sheet = Sheet.new(params[:assignment][:sheet_attributes])
-    end
-    @assignment = Assignment.new(:client_id => client_id, :sheet => sheet, :status => status)
+    @assignment = Assignment.new(params[:assignment])
 
     respond_to do |format|
       if @assignment.save

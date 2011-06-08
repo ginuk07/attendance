@@ -12,10 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.fields_for :sheet, @sheet do |a_form| %>
-      <%= a_form.label :date %>
-      <%= a_form.date_select :date, :start_year => Time.now.year, :end_year => 1991 %>
-    <% end %>
+    <%= f.label :date %>
+    <%= f.date_select :date, :start_year => Time.now.year, :end_year => 1991 %>
   </div>
   <div class="field">
     Client:<%= f.select :client_id, Client.all.collect {|c| [ c.name, c.id ]}, { :include_blank => true } %>

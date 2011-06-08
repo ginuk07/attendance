@@ -12,7 +12,7 @@
 
 <% @assignments.each do |assignment| %>
   <tr>
-    <td><%= assignment.sheet.date %></td>
+    <td><%= assignment.date %></td>
     <td><%= assignment.client.name %></td>
     <td><%= assignment.status %></td>
     <td><%= link_to 'Show', assignment %></td>

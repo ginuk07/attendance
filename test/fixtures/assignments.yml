@@ -2,10 +2,10 @@
 
 one:
   client: harry
-  sheet: one
   status: Present
+  date: 2011-06-05
 
 two:
   client: sandra
-  sheet: two
   status: Tardy
+  date: 2011-06-05

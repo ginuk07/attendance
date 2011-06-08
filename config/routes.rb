@@ -1,12 +1,9 @@
 Attendance::Application.routes.draw do
-  resources :sheets do
-    resources :clients, :assignments
-  end
   resources :assignments do
-    resources :client, :sheet
+    resources :clients
   end
   resources :clients do
-    resources :classification
+    resources :classifications
   end
   resources :classifications
   resources :schools
