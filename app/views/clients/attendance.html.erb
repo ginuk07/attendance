@@ -1,0 +1,21 @@
+<h1>Attendance Report</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Name</th>
+    <th>Status</th>
+  </tr>
+
+<% @assignments.each do |assignment| %>
+  <tr>
+    <td><%= assignment.date %></td>
+    <td><%= assignment.client.name %></td>
+    <td><%= assignment.status %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Back', clients_path %>

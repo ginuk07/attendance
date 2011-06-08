@@ -16,6 +16,7 @@
     <td><%= client.school.name unless client.school == nil %></td>
     <td><%= client.admission_date %></td>
     <td><%= link_to 'Show', client %></td>
+    <td><%= link_to 'Attendance', attendance_client_path(client) %></td>
     <td><%= link_to 'Edit', edit_client_path(client) %></td>
     <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

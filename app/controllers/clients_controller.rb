@@ -54,6 +54,17 @@ class ClientsController < ApplicationController
     end
   end
 
+  # GET /clients/1/attendance
+  # GET /clients/1/attendance.xml
+  def attendance
+    @assignments = Assignment.where(:client_id => params[:id])
+
+    respond_to do |format|
+      format.html # attendance.html.erb
+      format.xml  { render :xml => @assignments }
+    end
+  end
+
   # PUT /clients/1
   # PUT /clients/1.xml
   def update

@@ -12,6 +12,12 @@ class ClientsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:clients)
   end
 
+  test "should get attendance" do
+    get :attendance, :id => @client.to_param
+    assert_response :success
+    assert_not_nil assigns(:assignments)
+  end
+
   test "should get new" do
     get :new
     assert_response :success

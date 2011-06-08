@@ -4,7 +4,9 @@ Attendance::Application.routes.draw do
   end
   resources :clients do
     resources :classifications
+    get 'attendance', :on => :member
   end
+
   resources :classifications
   resources :schools
 
