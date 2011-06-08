@@ -42,7 +42,7 @@ class AssignmentsController < ApplicationController
   # POST /assignments.xml
   def create
     status = params[:assignment]["status"]
-    client_id = params[:assignment][:client_attributes]["id"]
+    client_id = params[:assignment]["client_id"]
     qyear = params[:assignment][:sheet_attributes].values_at("date(1i)")[0].to_i
     qmonth = params[:assignment][:sheet_attributes].values_at("date(2i)")[0].to_i
     qday = params[:assignment][:sheet_attributes].values_at("date(3i)")[0].to_i
