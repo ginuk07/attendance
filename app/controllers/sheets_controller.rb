@@ -2,7 +2,7 @@ class SheetsController < ApplicationController
   # GET /sheets
   # GET /sheets.xml
   def index
-    @sheets = Sheet.all
+    @sheets = Sheet.order('date DESC').all
 
     respond_to do |format|
       format.html # index.html.erb
