@@ -57,7 +57,7 @@ class ClientsController < ApplicationController
   # GET /clients/1/attendance
   # GET /clients/1/attendance.xml
   def attendance
-    @assignments = Assignment.where(:client_id => params[:id])
+    @assignments = Assignment.order('date DESC').where(:client_id => params[:id])
 
     respond_to do |format|
       format.html # attendance.html.erb
