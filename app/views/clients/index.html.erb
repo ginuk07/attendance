@@ -1,13 +1,11 @@
 <h1>Listing Clients</h1>
 
-<table>
+<table width="100%">
   <tr>
     <th>Name</th>
     <th>Previous School</th>
     <th>Admission Date</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Actions</th>
   </tr>
 
 <% @clients.each do |client| %>
@@ -15,10 +13,10 @@
     <td><%= client.name %></td>
     <td><%= client.school.name unless client.school == nil %></td>
     <td><%= client.admission_date %></td>
-    <td><%= link_to 'Show', client %></td>
-    <td><%= link_to 'Attendance', attendance_client_path(client) %></td>
-    <td><%= link_to 'Edit', edit_client_path(client) %></td>
-    <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', client %> |
+      <%= link_to 'Attendance', attendance_client_path(client) %> |
+      <%= link_to 'Edit', edit_client_path(client) %> |
+      <%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
