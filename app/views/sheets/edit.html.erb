@@ -1,8 +1,9 @@
-<%= form_for :assignments, :url => "/sheets" do |f| %>
+<h1>Editing Attendance Sheet</h1>
+
+<%= form_for :assignments, :url => "/sheets/#{params[:id]}" do |f| %>
   <div class="field">
     Date: <%= date_select :assignment, "date", :start_year => Time.now.year, :end_year => 1991 %>
   </div>
-  <% i = 0 %>
   <% @assignments.each do |assignment| %>
     <%= f.fields_for :assignment, assignment do |aform| %>
       <% if assignment.errors.any? %>
@@ -18,9 +19,8 @@
       <% end %>
       <div class="field">
         <%= aform.object.client.name %>
-        <%= aform.hidden_field :client_id, :id => "assignments_#{i}_assignment_client_id", :name => "assignments[#{i}][assignment][client_id]" %>
-        <%= aform.select "status", ["Present", "Tardy", "Unexcused Absence", "Excused Absence", "School Closed", "Suspended"], { :include_blank => true }, { :id => "assignments_#{i}_assignment_status", :name => "assignments[#{i}][assignment][status]" } %>
-        <% i += 1 %>
+        <%= aform.hidden_field :client_id, :id => "assignments_#{assignment.id}_assignment_client_id", :name => "assignments[#{assignment.id}][assignment][client_id]" %>
+        <%= aform.select "status", ["Present", "Tardy", "Unexcused Absence", "Excused Absence", "School Closed", "Suspended"], { :include_blank => true }, { :id => "assignments_#{assignment.id}_assignment_status", :name => "assignments[#{assignment.id}][assignment][status]" } %>
       </div>
     <% end %>
   <% end %>
@@ -28,3 +28,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<%= link_to 'Back', sheets_path %>

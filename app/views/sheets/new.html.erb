@@ -1,3 +1,32 @@
 <h1>New Attendance Sheet</h1>
 
-<%= render 'form' %>
+<%= form_for :assignments, :url => "/sheets" do |f| %>
+  <div class="field">
+    Date: <%= date_select :assignment, "date", :start_year => Time.now.year, :end_year => 1991 %>
+  </div>
+  <% i = 0 %>
+  <% @assignments.each do |assignment| %>
+    <%= f.fields_for :assignment, assignment do |aform| %>
+      <% if assignment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(assignment.errors.count, "error") %> prohibited this attendance assignment from being saved:</h2>
+
+          <ul>
+          <% assignment.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="field">
+        <%= aform.object.client.name %>
+        <%= aform.hidden_field :client_id, :id => "assignments_#{i}_assignment_client_id", :name => "assignments[#{i}][assignment][client_id]" %>
+        <%= aform.select "status", ["Present", "Tardy", "Unexcused Absence", "Excused Absence", "School Closed", "Suspended"], { :include_blank => true }, { :id => "assignments_#{i}_assignment_status", :name => "assignments[#{i}][assignment][status]" } %>
+        <% i += 1 %>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
