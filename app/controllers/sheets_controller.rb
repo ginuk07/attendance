@@ -16,19 +16,8 @@ class SheetsController < ApplicationController
   end
 
   def create
-    @assignments = Array.new
-
-    qyear = params["assignment"]["date(1i)"].to_i
-    qmonth = params["assignment"]["date(2i)"].to_i
-    qday = params["assignment"]["date(3i)"].to_i
-    qdate = Date.new(year=qyear,month=qmonth,day=qday)
-
-    params[:assignments].values.collect { |values|
-      @assignments.push(Assignment.new(:client_id => values["assignment"]["client_id"],
-                                       :status => values["assignment"]["status"],
-                                       :date => qdate))
-    }
-
+    @assignments = parse(params)
+    qdate = parse_date(params[:assignment])
     respond_to do |format|
       @assignments.each do |assignment|
         if assignment.save
@@ -39,5 +28,34 @@ class SheetsController < ApplicationController
       end
       format.html { redirect_to(sheet_path(qdate)) }
     end
+  end
+
+  def edit
+    @assignments = Assignment.where(:date => params[:id])
+  end
+
+  def update
+    @assignments = Assignment.where(:date => params[:id])
+  end
+
+  private
+  def parse(params)
+    assignments = Array.new
+    qdate = parse_date(params[:assignment])
+
+    params[:assignments].values.collect { |values|
+      assignments.push(Assignment.new(:client_id => values["assignment"]["client_id"],
+                                      :status => values["assignment"]["status"],
+                                      :date => qdate))
+    }
+    return assignments
+  end
+
+  private
+  def parse_date(d)
+    qyear = d["date(1i)"].to_i
+    qmonth = d["date(2i)"].to_i
+    qday = d["date(3i)"].to_i
+    return Date.new(year=qyear,month=qmonth,day=qday)
   end
 end
