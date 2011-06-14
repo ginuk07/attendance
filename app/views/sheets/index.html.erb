@@ -1,0 +1,17 @@
+<h2>Listing Attendance Sheets</h2>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Action</th>
+  </tr>
+  <% @assignments.each do |a| %>
+    <tr>
+      <td><%= a.date %></td>
+      <td><%= link_to 'Show', sheet_path(a.date) %> |
+          <%= link_to 'Edit', edit_sheet_path(a.date) %> |
+          <%= link_to 'Destroy', sheet_path(a.date), :confirm => "Are you sure?", :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to 'Back', root_path %>

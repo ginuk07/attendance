@@ -1,4 +1,8 @@
 class SheetsController < ApplicationController
+  def index
+    @assignments = Assignment.select('DISTINCT date').order('date DESC')
+  end
+
   def new
     @clients = Client.where('discharge_date IS NULL').all
 
@@ -13,6 +17,14 @@ class SheetsController < ApplicationController
 
   def show
     @assignments = Assignment.where(:date => params[:id])
+  end
+
+  def destroy
+    Assignment.where(:date => params[:id]).destroy_all
+
+    respond_to do |format|
+      format.html { redirect_to(sheets_url) }
+    end
   end
 
   def create
