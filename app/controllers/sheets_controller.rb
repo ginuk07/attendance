@@ -42,11 +42,10 @@ class SheetsController < ApplicationController
         assignment = Assignment.find(k)
         if assignment.update_attributes(params[:assignments][k][:assignment])
         else
-          format.html { render :action => "new" }
-          format.xml  { render :xml => assignment.errors, :status => :unprocessable_entity }
+          format.js { render :json => assignment.errors, :status => :unprocessable_entity }
         end
       end
-      format.html { redirect_to(sheet_path(qdate)) }
+      format.js { render :status => 204 }
     end
   end
 
