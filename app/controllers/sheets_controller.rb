@@ -26,7 +26,7 @@ class SheetsController < ApplicationController
           format.xml  { render :xml => assignment.errors, :status => :unprocessable_entity }
         end
       end
-      format.html { redirect_to(sheet_path(qdate)) }
+      format.html { redirect_to(edit_sheet_path(qdate)) }
     end
   end
 
