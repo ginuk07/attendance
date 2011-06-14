@@ -3,15 +3,15 @@
 <%= form_tag("/sheets/#{params[:id]}", :remote => true, :method => :put, :id => "edit_assignments_with_date_#{params[:id]}") do %>
   <% if @assignments.any? %>
     <div class="field">
-      Date: <%= @assignments[0].date %>
+      <h2 class="large">Date: <%= @assignments[0].date %></h2>
     </div>
   <% end %>
   <% @assignments.each do |assignment| %>
+    <%= hidden_field_tag "assignments[#{assignment.id}][assignment][date]", value = assignment.date %>
+    <%= hidden_field_tag "assignments[#{assignment.id}][assignment][client_id]", value = assignment.client.id %>
     <div class="field">
-      <%= assignment.client.name %>
-      <%= hidden_field_tag "assignments[#{assignment.id}][assignment][date]", value = assignment.date %>
-      <%= hidden_field_tag "assignments[#{assignment.id}][assignment][client_id]", value = assignment.client.id %>
-      <%= select_tag "assignments[#{assignment.id}][assignment][status]", options_for_select(["Present", "Tardy", "Unexcused Absence", "Excused Absence", "School Closed", "Suspended"], :selected => assignment.status), { :include_blank => true } %>
+      <span style="float:left;width:100px;margin-top:6px;"><%= assignment.client.name %></span>
+      <span><%= select_tag "assignments[#{assignment.id}][assignment][status]", options_for_select(["Present", "Tardy", "Unexcused Absence", "Excused Absence", "School Closed", "Suspended"], :selected => assignment.status), { :include_blank => true } %></span>
     </div>
   <% end %>
   <div class="actions">
