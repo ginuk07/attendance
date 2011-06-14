@@ -35,7 +35,19 @@ class SheetsController < ApplicationController
   end
 
   def update
-    @assignments = Assignment.where(:date => params[:id])
+    qdate = Date.new(params[:id].to_i)
+    assignment_keys = params[:assignments].keys
+    respond_to do |format|
+      assignment_keys.each do |k|
+        assignment = Assignment.find(k)
+        if assignment.update_attributes(params[:assignments][k][:assignment])
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => assignment.errors, :status => :unprocessable_entity }
+        end
+      end
+      format.html { redirect_to(sheet_path(qdate)) }
+    end
   end
 
   private
