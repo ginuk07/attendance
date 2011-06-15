@@ -22,8 +22,13 @@
       <%= aform.hidden_field :client_id, :id => "assignments_#{i}_assignment_client_id", :name => "assignments[#{i}][assignment][client_id]" %>
 
       <div class="field">
-        <span style="float:left;width:100px;margin-top:6px;"><%= aform.object.client.name %></span>
-        <span><%= aform.select "status", ["Present", "Tardy", "Unexcused Absence", "Excused Absence", "School Closed", "Suspended"], { :include_blank => true }, { :id => "assignments_#{i}_assignment_status", :name => "assignments[#{i}][assignment][status]" } %></span>
+        <span style="width:150px;float:left;margin-top:6px;"><%= aform.object.client.name %></span>
+        <span class="status_buttonset">
+          <% ["Present", "Tardy", "Unexcused Absence", "Excused Absence", "School Closed", "Suspended"].each do |s| %>
+            <%= aform.label s, { :for => "assignments_#{i}_assignment_status_#{s.sub(' ', '_')}" } %>
+            <%= aform.radio_button "status", s, { :id => "assignments_#{i}_assignment_status_#{s.sub(' ','_')}", :name => "assignments[#{i}][assignment][status]" } %>
+          <% end %>
+        </span>
       </div>
       <% i += 1 %>
     <% end %>

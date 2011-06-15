@@ -32,3 +32,16 @@
   font-size: 12px;
   list-style: square;
 }
+
+.status_buttonset span.ui-button-text {
+  font-size: smaller;
+}
+
+.field {
+  margin: 10px 0px;
+  padding: 5px;
+}
+
+.field:hover {
+  background-color: #eee;
+}
