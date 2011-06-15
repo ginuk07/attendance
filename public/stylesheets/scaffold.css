@@ -42,10 +42,6 @@
   padding: 5px;
 }
 
-.field:hover {
-  background-color: #eee;
-}
-
 tbody tr:nth-child(even) td, tbody tr.even td {
   background: transparent;
 }

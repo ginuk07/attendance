@@ -1,20 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Date:</b>
-  <%= @assignment.date %>
-</p>
-
-<p>
-  <b>Client:</b>
-  <%= @assignment.client.name %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @assignment.status %>
-</p>
-
+<table class="ui-widget ui-widget-content">
+  <tr class="ui-widget-header">
+    <th colspan="2"><%= @assignment.date %></th>
+  </tr>
+  <tr>
+    <td>Client</td>
+    <td><%= @assignment.client.name %></td>
+  </tr>
+  <tr>
+    <td>Status</td>
+    <td><%= @assignment.status %></td>
+</table>
 
 <%= link_to 'Edit', edit_assignment_path(@assignment) %> |
 <%= link_to 'Back', assignments_path %>

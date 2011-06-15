@@ -1,9 +1,9 @@
-<h1>Editing Attendance Sheet</h1>
-
+<h2 class="ui-widget-header" style="padding:10px;">Editing Attendance Sheet</h2>
+<div class="ui-widget ui-widget-content">
 <%= form_tag("/sheets/#{params[:id]}", :remote => true, :method => :put, :id => "edit_assignments_with_date_#{params[:id]}") do %>
   <% if @assignments.any? %>
     <div class="field">
-      <h2 class="large">Date: <%= @assignments[0].date %></h2>
+      <div class="large">Date: <%= @assignments[0].date %></div>
     </div>
   <% end %>
   <% @assignments.each do |assignment| %>
@@ -24,3 +24,4 @@
   </div>
 <% end %>
 <%= link_to 'Back', sheets_path %>
+</div>

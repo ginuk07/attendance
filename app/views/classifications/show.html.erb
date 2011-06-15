@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Display name:</b>
-  <%= @classification.display_name %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @classification.name %>
-</p>
-
-<p>
-  <b>Rate:</b>
-  <%= number_to_currency @classification.rate %>
-</p>
-
+<table class="ui-widget ui-widget-content">
+  <tr>
+    <th colspan="2" class="ui-widget-header">
+      <%= @classification.display_name %>
+    </th>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td><%= @classification.name %></td>
+  </tr>
+  <tr>
+    <td>Rate</td>
+    <td><%= number_to_currency @classification.rate %></td>
+  </tr>
+</table>
 
 <%= link_to 'Edit', edit_classification_path(@classification) %> |
 <%= link_to 'Back', classifications_path %>
