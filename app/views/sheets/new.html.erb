@@ -22,7 +22,7 @@
       <%= aform.hidden_field :client_id, :id => "assignments_#{i}_assignment_client_id", :name => "assignments[#{i}][assignment][client_id]" %>
 
       <div class="field">
-        <span style="width:150px;float:left;margin-top:6px;"><%= aform.object.client.name %></span>
+        <span style="font-size:105%;width:150px;float:left;margin-top:2px;"><%= aform.object.client.name %></span>
         <span class="status_buttonset">
           <% ["Present", "Tardy", "Unexcused Absence", "Excused Absence", "School Closed", "Suspended"].each do |s| %>
             <%= aform.label s, { :for => "assignments_#{i}_assignment_status_#{s.sub(' ', '_')}" } %>
