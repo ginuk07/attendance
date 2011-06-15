@@ -1,19 +1,17 @@
 <h1>Listing schools</h1>
 
-<table>
-  <tr>
+<table class="ui-widget ui-widget-content">
+  <tr class="ui-widget-header">
     <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Action</th>
   </tr>
 
 <% @schools.each do |school| %>
   <tr>
     <td><%= school.name %></td>
-    <td><%= link_to 'Show', school %></td>
-    <td><%= link_to 'Edit', edit_school_path(school) %></td>
-    <td><%= link_to 'Destroy', school, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', school %> |
+        <%= link_to 'Edit', edit_school_path(school) %> |
+        <%= link_to 'Destroy', school, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

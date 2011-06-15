@@ -1,13 +1,11 @@
 <h1>Listing classifications</h1>
 
-<table>
-  <tr>
+<table class="ui-widget ui-widget-content">
+  <tr class="ui-widget-header">
     <th>Display name</th>
     <th>Name</th>
     <th>Rate</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Action</th>
   </tr>
 
 <% @classifications.each do |classification| %>
@@ -15,9 +13,9 @@
     <td><%= classification.display_name %></td>
     <td><%= classification.name %></td>
     <td><%= number_to_currency classification.rate %></td>
-    <td><%= link_to 'Show', classification %></td>
-    <td><%= link_to 'Edit', edit_classification_path(classification) %></td>
-    <td><%= link_to 'Destroy', classification, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', classification %> |
+        <%= link_to 'Edit', edit_classification_path(classification) %> |
+        <%= link_to 'Destroy', classification, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
