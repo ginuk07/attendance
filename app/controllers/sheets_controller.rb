@@ -57,7 +57,7 @@ class SheetsController < ApplicationController
           format.js { render :json => assignment.errors, :status => :unprocessable_entity }
         end
       end
-      format.js { render :status => 204 }
+      format.js { render :status => 206 }
     end
   end
 
