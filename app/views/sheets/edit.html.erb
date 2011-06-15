@@ -10,7 +10,7 @@
     <%= hidden_field_tag "assignments[#{assignment.id}][assignment][date]", value = assignment.date %>
     <%= hidden_field_tag "assignments[#{assignment.id}][assignment][client_id]", value = assignment.client.id %>
     <div class="field">
-      <span style="font-size:105%;width:150px;float:left;margin-top:2px;"><%= assignment.client.name %></span>
+      <span style="width:150px;float:left;margin-top:2px;"><%= assignment.client.name %></span>
       <span class="status_buttonset">
         <% ["Present", "Tardy", "Unexcused Absence", "Excused Absence", "School Closed", "Suspended"].each do |s| %>
           <%= label_tag "assignments_#{assignment.id}_assignment_status_#{s.sub(' ', '_')}", s %>
