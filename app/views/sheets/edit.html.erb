@@ -1,3 +1,4 @@
+<% require 'lib/attendance_status_values' %>
 <h2 class="ui-widget-header" style="padding:10px;">Editing Attendance Sheet</h2>
 <div class="ui-widget ui-widget-content">
 <%= form_tag("/sheets/#{params[:id]}", :remote => true, :method => :put, :id => "edit_assignments_with_date_#{params[:id]}") do %>
@@ -12,7 +13,7 @@
     <div class="field">
       <span style="width:150px;float:left;margin-top:2px;"><%= assignment.client.name %></span>
       <span class="status_buttonset">
-        <% ["Present", "Tardy", "Unexcused Absence", "Excused Absence", "School Closed", "Suspended"].each do |s| %>
+        <% AttendanceStatusValues::VALUES.each do |s| %>
           <%= label_tag "assignments_#{assignment.id}_assignment_status_#{s.sub(' ', '_')}", s %>
           <%= radio_button_tag id = "assignments_#{assignment.id}_assignment_status", s, check = s.eql?( assignment.status), { :name => "assignments[#{assignment.id}][assignment][status]" } %>
         <% end %>

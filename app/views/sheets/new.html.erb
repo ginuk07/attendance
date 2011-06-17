@@ -1,3 +1,4 @@
+<% require 'lib/attendance_status_values' %>
 <h2 class="ui-widget-header" style="padding:10px;">New Attendance Sheet</h2>
 <div class="ui-widget ui-widget-content">
 <%= form_for :assignments, :url => "/sheets" do |f| %>
@@ -24,7 +25,7 @@
       <div class="field">
         <span style="width:150px;float:left;margin-top:2px;"><%= aform.object.client.name %></span>
         <span class="status_buttonset">
-          <% ["Present", "Tardy", "Unexcused Absence", "Excused Absence", "School Closed", "Suspended"].each do |s| %>
+          <% AttendanceStatusValues::VALUES.each do |s| %>
             <%= aform.label s, { :for => "assignments_#{i}_assignment_status_#{s.sub(' ', '_')}" } %>
             <%= aform.radio_button "status", s, { :id => "assignments_#{i}_assignment_status_#{s.sub(' ','_')}", :name => "assignments[#{i}][assignment][status]" } %>
           <% end %>
